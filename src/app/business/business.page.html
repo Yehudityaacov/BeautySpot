@@ -1,0 +1,14 @@
+﻿<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>בתי עסק</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+    <app-business-filter [filterSubject$]="filterSubject$"></app-business-filter>
+    <app-business-component [businesses$]="businesses$"
+                            [filter$]="filterSubject$.asObservable()"></app-business-component>
+</ion-content>

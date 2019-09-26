@@ -1,0 +1,75 @@
+@import 'variables';
+
+ion-row {
+    direction: rtl;
+}
+
+.float-button {
+    position: fixed !important;
+    bottom: 10px !important;
+    left: 10px !important;
+}
+
+.mat-form-field {
+    text-align: right !important;
+    text-indent: 10px;
+    direction: rtl;
+
+    &.mat-input-full-width {
+        width: 100% !important;
+    }
+}
+
+.modal-title {
+    margin-top: 10px;
+
+    .close-modal {
+        margin-top: 10px;
+    }
+}
+
+.day-slider {
+    direction: rtl;
+}
+
+.category-select {
+    .mat-select-arrow {
+        margin: 0 30px !important;
+    }
+}
+
+.inner-scroll {
+    z-index: 2147483647;
+}
+
+.mat-expansion-panel-header {
+    direction: rtl;
+}
+
+.mat-toolbar {
+    .button {
+        color: $primary !important;
+    }
+
+    .mat-icon {
+        color: $primary !important;
+    }
+}
+
+.header {
+    .button {
+        color: $primary !important;
+    }
+
+    .calendar-icon {
+        color: $primary !important;
+    }
+
+    .mat-icon {
+        color: $primary !important;
+    }
+}
+
+.ngx-gallery-image {
+    height: 200px;
+}

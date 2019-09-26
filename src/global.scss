@@ -1,0 +1,30 @@
+// http://ionicframework.com/docs/theming/
+@import '~@ionic/angular/css/core.css';
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+@import "~@angular-mdl/core/scss/color-definitions";
+@import '~@angular-mdl/core/scss/material-design-lite';
+/*@import '../../../node_modules/compass/lib/compass.js';*/
+
+body {
+    font-family: Roboto, Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+
+   
+}
+input.ng-invalide.ng-dirty{
+    border-bottom:#ff0000!important;
+    box-shadow:0 1px 0 0 #e91e63 !important;
+}
+

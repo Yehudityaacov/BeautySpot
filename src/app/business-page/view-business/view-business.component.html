@@ -1,0 +1,50 @@
+﻿
+<h4 class="name">
+    {{business.name}}
+</h4>
+<div class="business-info">
+    {{categoryName}}
+</div>
+<div class="business-info">
+    {{business.phone}}
+</div>
+<div class="business-info">
+    {{business.address}}
+</div>
+
+<div class="fb-inst-icon" align="center">
+    <mat-icon svgIcon="fb-icon" (click)="navToFb()"></mat-icon>
+    <mat-icon svgIcon="insta-icon" (click)="navToIg()"></mat-icon>
+</div>
+
+<div class="business-info" align="center">
+    <button mat-raised-button
+            class="business-info-button" (click)="showInfo(1)"
+            color="accent">
+        מחירון
+    </button>
+
+    <button mat-raised-button
+            class="business-info-button"
+            (click)="showInfo(0)"
+            color="accent">
+        שעות פעילות
+    </button>
+</div>
+
+<div class="pay-button" align="center">
+    <button mat-raised-button
+            color="accent"
+            (click)="showPayPal()">
+        שלם לעסק
+    </button>
+</div>
+
+<div class="gallery-button" align="center">
+    <button mat-raised-button
+            color="accent"
+            (click)="showGallery()">
+        פתח גלריה
+    </button>
+</div>
+

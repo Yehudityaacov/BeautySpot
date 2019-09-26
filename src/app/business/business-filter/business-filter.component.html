@@ -1,0 +1,21 @@
+﻿<ion-row>
+    <ion-col size="6">
+        <mat-form-field class="category-select">
+            <mat-label>קטגוריה</mat-label>
+            <mat-select [formControl]="categoryControl" 
+                        multiple>
+                <mat-option *ngFor="let c of categories" 
+                            [value]="c.value">{{c.name}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </ion-col>
+    <ion-col size="6">
+        <mat-form-field class="mat-input-full-width">
+            <input matInput
+                   placeholder="שם העסק:"
+                   [formControl]="businessNameControl"
+                   name="name"
+                   type="text">
+        </mat-form-field>
+    </ion-col>
+</ion-row>

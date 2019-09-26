@@ -1,0 +1,63 @@
+﻿<div class="create-event-modal">
+    <div class="modal-title">
+        <div class="text">
+            New event
+        </div>
+        <div class="close-modal">
+            <mat-icon (click)="closeModal()">clear</mat-icon>
+        </div>
+    </div>
+    <div class="modal-body">
+        <form class="create-event-form" *ngIf="isEditMode">
+            <mat-form-field class="mat-input-full-width">
+                <input matInput
+                       placeholder="שם:"
+                       [formControl]="eventNameControl"
+                       [errorStateMatcher]="matcher"
+                       [(ngModel)]="model.name"
+                       name="name"
+                       type="text"
+                       required>
+                <mat-error *ngIf="eventNameControl.hasError('required')">
+                    שם נדרש
+                </mat-error>
+            </mat-form-field>
+            {{model.from}}
+            <ion-item>
+                <ion-label>משעה</ion-label>
+                <ion-datetime display-format="HH:mm"
+                              name="from"
+                              [(ngModel)]="model.fromHourString"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>עד שעה</ion-label>
+                <ion-datetime display-format="HH:mm"
+                              name="to"
+                              [(ngModel)]="model.toHourString"></ion-datetime>
+            </ion-item>
+
+            <div class="buttons" align="center">
+                <button mat-raised-button
+                        color="accent"
+                        type="submit"
+                        (click)="accept()">
+                    הוסף
+                </button>
+            </div>
+        </form>
+        <div class="show-event" *ngIf="!isEditMode">
+            <ion-item>
+                <ion-label>שם:</ion-label>
+                <ion-label>{{model.name}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>משעה:</ion-label>
+                <ion-label>{{model.fromHourString}}</ion-label>
+            </ion-item>
+            <ion-item>
+                <ion-label>עד שעה:</ion-label>
+                <ion-label>{{model.toHourString}}</ion-label>
+            </ion-item>
+        </div>
+    </div>
+</div>

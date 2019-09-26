@@ -1,0 +1,63 @@
+﻿<ion-header no-border slot="start">
+    <mat-toolbar>
+        <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>התחברות</ion-title>
+        <span class="toolbar-spacer"></span>
+        <button class="back-button" (click)="logout()" mat-icon-button align="right">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+    </mat-toolbar>
+    </ion-header >
+
+<ion-content padding>
+    <ion-list>
+        <form [formGroup]="loginForm" novalidate>
+            <ion-item>
+                <ion-label position="floating"> שם משתמש:</ion-label>
+                <ion-input type="text" formControlName="username"></ion-input>
+            </ion-item>
+            <mat-error *ngIf="username.hasError('required')&& username.touched">
+                <p> *יש להזין שם</p>
+            </mat-error>
+            <ion-item>
+                <ion-label position="floating"> סיסמה:</ion-label>
+                <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
+            <mat-error *ngIf="password.hasError('required')&& password.touched">
+                <p> *יש להזין סיסמה</p>
+            </mat-error>
+        </form>
+
+        <ion-button expand="full" fill="outline" color="primary" shape="round" style="margin-right:20px" (click)="loginByNameandPassword()" *ngIf="!user">
+            <b><i>כניסת משתמש קיים</i> </b>
+        </ion-button>
+
+        <ion-item-divider>
+            <span class="or"><span class="orInner"></span></span>
+        </ion-item-divider>
+        <ion-button expand="full" fill="outline" shape="round" style="margin-right:20px" (click)="loginF()" *ngIf="!user">
+            <b><i>התחבר דרך פייסבוק</i> </b>
+            <ion-icon name="logo-facebook" size-md="6" class=" marginLeft">
+            </ion-icon>
+        </ion-button>
+
+        <ion-button expand="block" fill="outline" shape="round" color="danger" style="margin-right:20px" (click)="loginG()" *ngIf="!user">
+            <b><i>התחבר דרך גוגל</i> </b>
+            <ion-icon name="logo-googleplus" size-md="6" class="marginLeft">
+            </ion-icon>
+        </ion-button>
+    </ion-list>
+    <br />
+    <ion-button expand="full" fill="outline" 
+                color="primary"
+                shape="round"
+                routerLink="/signup" routreLinkActive="active" >
+        <b><i>רישום משתמש חדש</i> </b>
+    </ion-button>
+    <!--<a routerLink="/signup" routreLinkActive="active" class="alc"><strong>צור חשבון חדש</strong></a>-->
+</ion-content>
+
+
+

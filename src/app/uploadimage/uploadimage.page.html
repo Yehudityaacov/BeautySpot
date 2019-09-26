@@ -1,0 +1,33 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Camera Image Upload</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+   <div class="center"></div>
+        <ion-button   color="accent" (click)="getPicture(0)"> Select a picture</ion-button>
+        <ion-card>
+            <img [src]="captureDataUrl" *ngIf="captureDataUrl" />
+            <!-- <button ion-button (click)="upload()" *ngIf="captureDataUrl">Upload to gallery!</button>-->
+          </ion-card>
+           
+                <ion-button shape="round" color="accent" (click)="upload()" *ngIf="captureDataUrl">Upload to gallery!</ion-button>
+           
+     
+</ion-content>
+<!--<ion-content padding>
+    <ion-row class="center">
+        <ion-button class="filebth" shape="round" color="primary" fill="outline"(click)="getPicture(0)">Get Picture</ion-button>
+    </ion-row>
+    <ion-card *ngIf="captureDataUrl">
+        <img [src]="captureDataUrl" />
+        <ion-card-content>
+            <ion-textarea placeholder="Enter some description" [{ngModel}]="desc"></ion-textarea>
+            <button ion-button shape="round" color="primary" (click)="upload()" *ngIf="captureDataUrl">Upload to gallery!</button>
+        </ion-card-content>
+    </ion-content>---->
+

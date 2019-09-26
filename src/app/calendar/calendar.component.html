@@ -1,0 +1,86 @@
+<div align="center">
+    <button mat-raised-button
+            color="accent"
+            mwlCalendarPreviousView
+            [view]="'week'"
+            [(viewDate)]="viewDate"
+            (click)="onDateChanged(viewDate)">
+        Previous
+    </button>
+    <button mat-raised-button
+            color="accent"
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+            (click)="onDateChanged(viewDate)">
+        Today
+    </button>
+    <button mat-raised-button
+            color="accent"
+            mwlCalendarNextView
+            [view]="'week'"
+            [(viewDate)]="viewDate"
+            (click)="onDateChanged(viewDate)">
+        Next
+    </button>
+</div>
+<div align="center">
+    {{getDateRange(viewDate)}}
+</div>
+<br />
+
+<ng-template #weekViewHourSegmentTemplate
+             let-segment="segment"
+             let-locale="locale"
+             let-segmentHeight="segmentHeight"
+             let-isTimeLabel="isTimeLabel">
+    <div class="actions">
+        <i class="fa fa-fw fa-pencil"></i>
+        <i class="fa fa-fw fa-times"></i>
+    </div>
+    <div #segmentElement
+         class="cal-hour-segment"
+         [style.height.px]="segmentHeight"
+         [class.cal-hour-start]="segment.isStart"
+         [class.cal-after-hour-start]="!segment.isStart"
+         [ngClass]="segment.cssClass"
+         (mousedown)="startDragToCreate(segment, $event, segmentElement)">
+        <div class="cal-time" *ngIf="isTimeLabel">
+            {{ segment.date | calendarDate:'weekViewHour':locale }}
+        </div>
+    </div>
+</ng-template>
+<ng-template #headerTemplate let-days="days" let-locale="locale"
+             let-dayClicked="dayClicked" let-eventDropped="eventDropped">
+    <div class="cal-day-headers cursor-default">
+        <div class="cal-header"
+             *ngFor="let day of days"
+             [class.cal-past]="day.isPast"
+             [class.cal-present]="day.isToday"
+             [class.cal-future]="day.isFuture"
+             [class.cal-drag-over]="day.dragOver"
+             (mwlClick)="headerClick(day)"
+             mwlDroppable
+             (dragEnter)="day.dragOver = true"
+             (dragLeave)="day.dragOver = false"
+             (drop)="day.dragOver = false; eventDropped.emit({event: $event.dropData.event, newStart: day.date, fromHeader: true})">
+            <div class="top" [class.today]="day.isToday">
+                <div class="day-label text-uppercase">
+                    {{ day.date | calendarDate:'weekViewColumnHeader':locale }}
+                </div>
+                <div class="day-number">{{getDateStr(day.date)}}<!--{{ day.date | calendarDate:'weekViewColumnSubHeader':locale }}--></div>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<div class="calendar-container">
+    <mwl-calendar-week-view [viewDate]="viewDate"
+                            [events]="events"
+                            [headerTemplate]="headerTemplate"
+                            [hourSegmentTemplate]="weekViewHourSegmentTemplate"
+                            [dayStartHour]="minHour"
+                            [dayEndHour]="maxHour"
+                            [excludeDays]="daysToExclude"
+                            (eventClicked)="onEventClick($event.event)">
+    </mwl-calendar-week-view>
+</div>

@@ -1,0 +1,203 @@
+﻿
+<div class="business-container"
+     [style.marginBottom.px]="containerBottomMargin">
+    <div class="camera " align="center">
+        <ion-img *ngIf="uploadservice?.logoimage" src="{{uploadservice?.logoimage }}">
+        </ion-img>
+        <button ion-button (click)="uploadLogo()">Logo</button>
+    </div>
+    <mat-form-field class="mat-input-full-width">
+        <input matInput
+               placeholder="שם העסק:"
+               [formControl]="businessNameControl"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="business.name"
+               name="name"
+               type="text"
+               required
+               disabled>
+        <mat-error *ngIf="businessNameControl.hasError('required')">
+            שם עסק נדרש
+        </mat-error>
+        <mat-error *ngIf="businessNameControl.hasError('maxlength') ">
+            גודל מקסימלי של {{maxLength}} תווים
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-input-full-width">
+        <input matInput
+               placeholder="מס' טלפון:"
+               [formControl]="phoneFormControl"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="business.phone"
+               name="phone"
+               type="tel"
+               required>
+        <mat-error *ngIf="!phoneFormControl.hasError('required') && phoneFormControl.hasError('pattern')">
+            מס' הטלפון אינו חוקי
+        </mat-error>
+        <mat-error *ngIf="phoneFormControl.hasError('required')">
+            יש להזין מס' טלפון
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-input-full-width">
+        <input matInput
+               placeholder="כתובת:"
+               [formControl]="addressControl"
+               [errorStateMatcher]="matcher"
+               [(ngModel)]="business.address"
+               name="address"
+               type="text"
+               required>
+        <mat-error *ngIf="addressControl.hasError('required')">
+            יש להזין כתובת
+        </mat-error>
+        <mat-error *ngIf="addressControl.hasError('maxlength')">
+            גודל מקסימלי של {{maxLength}} תווים
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="mat-input-full-width">
+        <mat-label>קטגוריה:</mat-label>
+        <mat-select [(ngModel)]="business.category"
+                    [formControl]="categoryFormControl"
+                    required>
+            <mat-option *ngFor="let c of categories"
+                        value="{{c.value}}">{{c.name}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="mat-input-full-width">
+        <input matInput
+               placeholder="פייסבוק:"
+               [(ngModel)]="business.facebook"
+               name="facebook"
+               type="text">
+    </mat-form-field>
+
+    <mat-form-field class="mat-input-full-width">
+        <input matInput
+               placeholder="אינסטגרם:"
+               [(ngModel)]="business.instagram"
+               name="instagram"
+               type="text">
+    </mat-form-field>
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="addMargin(50)"
+                             (closed)="addMargin(-50)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    מחירון:
+                </mat-panel-title>
+                <mat-panel-description>
+                    לחץ כדי לערוך
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+
+            <div class="pricing" *ngFor="let p of business.pricing">
+                <mat-form-field class="mat-input-full-width">
+                    <input matInput
+                           [(ngModel)]="p.name"
+                           placeholder="שם המוצר/השירות">
+
+                </mat-form-field>
+
+                <mat-form-field class="mat-input-full-width">
+                    <input matInput
+                           [(ngModel)]="p.price"
+                           placeholder="מחיר">
+                </mat-form-field>
+            </div>
+            <button class="add-pricing"
+                    mat-mini-fab
+                    color="accent"
+                    (click)="addPricing()">
+                +
+            </button>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+        <mat-expansion-panel (opened)="addMargin(100)"
+                             (closed)="addMargin(-100)">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    שעות פעילות:
+                </mat-panel-title>
+                <mat-panel-description>
+                    לחץ כדי לערוך
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+
+            <div class="opening-hours" *ngFor="let o of openingHoursArr">
+                <div class="day-picker">
+                    <mat-slide-toggle class="day-slider"
+                                      align="right"
+                                      color="accent"
+                                      [(ngModel)]="o.enabled">
+                        {{days[o.openingHours.day]}}
+
+                    </mat-slide-toggle>
+                </div>
+                <div class="time-picker" *ngIf="o.enabled">
+                    <ion-item>
+                        <ion-label>משעה</ion-label>
+                        <ion-datetime display-format="HH:mm"
+                                      name="from"
+                                      [(ngModel)]="o.openingHours.fromHour"></ion-datetime>
+                    </ion-item>
+                    <ion-item>
+                        <ion-label>עד שעה</ion-label>
+                        <ion-datetime display-format="HH:mm"
+                                      name="to"
+                                      [(ngModel)]="o.openingHours.toHour"></ion-datetime>
+                    </ion-item>
+                </div>
+            </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+
+    <div class="button-row" align="center">
+        <button class="accept-button"
+                mat-icon-button
+                color="accent"
+                (click)="saveChanges()"
+                [ngClass]="{'disabled-btn': addressControl.hasError('required') || phoneFormControl.hasError('required') || businessNameControl.hasError('required') || categoryFormControl.hasError('required')}"
+                [disabled]="addressControl.hasError('required') || phoneFormControl.hasError('required') || businessNameControl.hasError('required') || categoryFormControl.hasError('required')">
+            <mat-icon>check</mat-icon>
+        </button>
+        <button class="back-button" mat-icon-button align="left">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+    </div>
+
+    <!--<br />
+    <div>
+        <ion-item>
+            <ion-row>
+                <ion-label>לחץ כדי להוסיף תמונה לגלרייה</ion-label>
+                <ion-col width-100>
+                    <ion-button color="accent"
+                                (click)="uploadImageGallery()">
+                        <ion-icon name="md-image"></ion-icon>
+                    </ion-button>
+                </ion-col>
+            </ion-row>
+        </ion-item>
+    </div>-->
+
+    <div class="gallery-button" align="center">
+        <button mat-raised-button
+                color="accent"
+                (click)="editGallery()">
+            ערוך גלריה
+        </button>
+    </div>
+
+</div>
+
+

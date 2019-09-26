@@ -1,0 +1,88 @@
+﻿<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Payment</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <div *ngIf="gotData">
+        <h3 align="center">
+            אישור מכירה
+        </h3>
+        <div class="payment-details">
+            <ion-row>
+                <ion-col size="4" class="title">
+                    שם הקונה:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    <ion-row>
+                        <ion-col size="4" class="first-name">
+                            {{payment.paymentData.payer.name.given_name}}
+                        </ion-col>
+                        <ion-col size="8" class="last-name">
+                            {{payment.paymentData.payer.name.surname}}
+                        </ion-col>
+                    </ion-row>
+                </ion-col>
+            </ion-row>
+            <ion-row *ngIf="payment.paymentData.payer.email_address">
+                <ion-col size="4" class="title">
+                    אימייל:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    {{payment.paymentData.payer.email_address}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4" class="title">
+                    מזהה לקוח:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    {{payment.paymentData.payer.payer_id}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4" class="title">
+                    מזהה עסקה:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    {{payment.paymentData.id}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4" class="title">
+                    שם מוצר/שירות:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    {{payment.paymentData.purchase_units[0].description}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4" class="title">
+                    סכום העסקה:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    {{payment.paymentData.purchase_units[0].amount.value}}{{payment.paymentData.purchase_units[0].amount.currency_code}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4" class="title">
+                    מזהה עסק:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    {{payment.paymentData.purchase_units[0].payee.merchant_id}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col size="4" class="title">
+                    סטטוס עסקה:
+                </ion-col>
+                <ion-col size="8" class="details">
+                    {{payment.paymentData.status}}
+                </ion-col>
+            </ion-row>
+        </div>
+    </div>
+</ion-content>

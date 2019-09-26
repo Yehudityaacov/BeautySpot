@@ -1,0 +1,60 @@
+﻿
+<ion-header no-border slot="start">
+    <mat-toolbar>
+        <ion-buttons>
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title> חשבון חדש</ion-title>
+        <span class="toolbar-spacer"></span>
+        <button class="back-button" (click)="logout1()" mat-icon-button align="right">
+            <mat-icon>chevron_left</mat-icon>
+        </button>
+
+    </mat-toolbar>
+</ion-header>
+
+   
+<ion-content padding>
+
+
+    <ion-label text-wrap>
+        <ion-text text-center color="secondary">
+            <h4>צור חשבון חדש</h4>
+        </ion-text>
+    </ion-label>
+    <br />
+    
+    <ion-list>
+        <form [formGroup]="signupForm" novalidate>
+            <ion-item>
+                <ion-label position="floating"> שם משתמש*</ion-label>
+                <ion-input type="text" id="username" formControlName="username" [(ngModel)]="user.username "></ion-input>
+            </ion-item>
+            <mat-error *ngIf="username.hasError('required')&& username.touched">
+                <p> *יש להזין שם משתמש</p>
+            </mat-error>
+            <ion-item>
+                <ion-label position="floating"> סיסמה*</ion-label>
+                <ion-input type="password" id="password" formControlName="password" [(ngModel)]="user.password"></ion-input>
+            </ion-item>
+            <mat-error *ngIf="password.hasError('required')&& password.touched">
+                <p> *יש להזין סיסמה</p>
+            </mat-error>
+        </form>
+        <ion-item>
+            <!--<ion-label position="floating" > Confirm Password*</ion-label>-->
+            <ion-input [type]="password_type" id="cpassword"
+                       placeholder="Confirm Password *" [(ngModel)]="cpassword "></ion-input>
+                       <ion-icon name="eye" position="end"
+                      item-right (click)="togglePasswordMode()"></ion-icon>
+        </ion-item>
+
+        <!--[disabled]="signupForm.invalid"-->
+        <br />
+        <ion-button  expand="full" fill="outline"
+                    shape="round" style="margin-right:20px" (click)="Register()" clear>
+            <b><i>צור משתמש</i> </b>
+        </ion-button>
+    </ion-list>
+
+</ion-content>

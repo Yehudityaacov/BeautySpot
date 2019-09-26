@@ -1,0 +1,53 @@
+.close-modal {
+    margin-top: 10px;
+    position: absolute;
+    right: 10px;
+    top: 25px;
+}
+
+
+.pricing-container {
+    margin-top: 10px;
+    direction: rtl;
+
+    .inner-container {
+        width: 65%;
+        border-radius: 10px;
+        box-shadow: 0 0 6px 4px #ababab;
+
+        .title {
+            line-height: 2em;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .pricing-row {
+            &:last-of-type {
+                padding-bottom: 10px;
+            }
+        }
+    }
+}
+
+.opening-container {
+    margin-top: 10px;
+    direction: rtl;
+
+    .inner-container {
+        width: 65%;
+        border-radius: 10px;
+        box-shadow: 0 0 6px 4px #ababab;
+
+        .title {
+            line-height: 2em;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .opening-row {
+            &:last-of-type {
+                padding-bottom: 10px;
+            }
+        }
+    }
+}

@@ -1,0 +1,33 @@
+﻿<ion-row>
+    <ion-col size="1">
+        <div class="close-modal">
+            <mat-icon (click)="closeModal()">clear</mat-icon>
+        </div>
+    </ion-col>
+    <ion-col size="11">
+        <h4 class="title text" align="center">
+            פרטי עסק {{business.name}}
+        </h4>
+    </ion-col>
+    <ion-col size="12">
+        <div class="pricing-container" align="center" *ngIf="infoType === 1">
+            <div class="inner-container">
+                <div class="title" align="center"> מחירון: </div>
+                <div *ngFor="let p of business.pricing"
+                     class="pricing-row">
+                    {{p.price}}: {{p.name}}
+                </div>
+            </div>
+        </div>
+
+        <div class="opening-container" align="center" *ngIf="infoType === 0">
+            <div class="inner-container">
+                <div class="title" align="center"> שעות פתיחה: </div>
+                <div *ngFor="let p of business.openingHours"
+                     class="opening-row">
+                    {{days[p.day]}}: מ- {{p.fromHour}} עד {{p.toHour}}
+                </div>
+            </div>
+        </div>
+    </ion-col>
+</ion-row>

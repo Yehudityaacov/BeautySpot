@@ -1,0 +1,23 @@
+﻿<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>עריכת עסק</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <div class="user-businesses">
+        <button *ngFor="let b of (user$ | async).businesses"
+                mat-raised-button 
+                color="accent"
+                (click)="getBusinessById(b.guid)">
+            {{b.name}}
+        </button>
+    </div>
+    <button 
+            class="add-user-business float-button"
+            mat-mini-fab 
+            color="accent" 
+            (click)="addBuisness()">+</button>
+</ion-content>

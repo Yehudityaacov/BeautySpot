@@ -1,0 +1,33 @@
+﻿<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title></ion-title>
+        <!--<button mat-icon-button color="primary">
+            <mat-icon aria-label="Show business calendar">date_range</mat-icon>
+        </button>-->
+
+        <ion-icon slot="end"
+                  class="calendar-icon"
+                  [name]="'calendar'"
+                  (click)="showCalendar()"></ion-icon>
+    </ion-toolbar>
+</ion-header>
+<ion-content padding>
+    <div class="logo" align="center">
+        <div class="logo-img inline-div" 
+             [ngStyle]="getBusinessLogo()"
+             (click)="onLogoClick()">
+
+        </div>
+        <div class="logo-text inline-div">
+        
+        </div>
+    </div>
+    <app-edit-business *ngIf="canEdit"
+                       [business]="business"
+                       (businessSaved)="onBusinessSaved($event)"></app-edit-business>
+    <app-view-business *ngIf="!canEdit" [business]="business"></app-view-business>
+</ion-content>
+<!--(click)="uploadImage()"--> 

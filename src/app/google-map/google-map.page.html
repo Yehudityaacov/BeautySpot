@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Search By Location</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding  >
+    <!--<h2>Hey {{users?.displayName}}!</h2>-->
+    <div *ngIf="lat && lng">
+        <!--center point------>
+        <agm-map [latitude]="lat" [longitude]="lng" [zoom]="16">
+           <!---which cordenent we whant----->
+            <agm-marker [latitude]="lat" [longitude]="lng" >
+                <agm-info-window>
+                    <h3><strong>Hye</strong></h3>
+                    <p>You Are Here!</p>
+                </agm-info-window>
+            </agm-marker>
+            <!----Nerby user location <!--(i need to chang to nerby business)-->
+            <agm-marker *ngFor="let marker of markers"
+                        [latitude]="marker.location[0]" 
+                        [longitude]="marker.location[1]">
+                <agm-info-window>
+                    <h3><strong>Location Details</strong></h3>
+                    <p>You Are {{marker.distance}} kilometers from this point</p>
+                </agm-info-window>
+            </agm-marker>
+        </agm-map>
+    </div>
+</ion-content>-->

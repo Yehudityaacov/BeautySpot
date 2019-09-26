@@ -1,0 +1,23 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>photogallery</ion-title>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div id="images">
+        <div class="image" *ngFor="let photo of ((BusinessPhotos | async)?.PhotoGallery)">
+            <ion-card>
+                <ion-img height="200" width="200"  src="{{photo.image}}">
+
+                </ion-img>
+            </ion-card>
+            <!--<ion-content>
+                <p>{{photo.descreption}}</p>
+            </ion-content>-->
+        </div>
+    </div>
+
+</ion-content>

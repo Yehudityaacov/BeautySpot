@@ -1,0 +1,62 @@
+﻿
+<ion-header pading slot="start">
+    <mat-toolbar *ngIf="!log.userIsSignedIn() "
+                 id="mainToolbar"
+                 style="background: #F4F4F4">
+        <ion-buttons slot="start">
+            <ion-menu-button class="menu-button"></ion-menu-button>
+        </ion-buttons>
+        <ion-title> Beauty Spot </ion-title>
+        <span class="toolbar-spacer"></span>
+        <button mat-mini-fab
+                class="toolbar-icon"
+                style="background-image: url(assets/_ionicons_svg_md-contact.svg);"></button>
+        <!-- src="assets/_ionicons_svg_md-contact.svg"><br />-->
+
+    </mat-toolbar>
+    <mat-toolbar *ngIf="log.userIsSignedIn()"
+                 id="mainToolbar"
+                 style="background: #F4F4F4">
+
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>Beauty Spot</ion-title>
+        <span class="toolbar-spacer"></span>
+        <button mat-mini-fab
+                [matMenuTriggerFor]="avatarDropDown"
+                class="toolbar-avatar"
+                *ngIf="userService.user?.photoURL"
+                [ngStyle]="{ 'background-image':'url(' + userService.user?.photoURL+ ')'} "></button>
+
+    </mat-toolbar>
+</ion-header>
+<!-----menu window--->
+<mat-menu #avatarDropDown="matMenu">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>{{ userService.user?.username }}</mat-card-title>
+
+        </mat-card-header>
+    </mat-card>
+
+    <button mat-menu-item
+            (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Sign out</span>
+    </button>
+</mat-menu>
+<ion-content pading>
+    <img src="assets/eyes.jpg" alt="eyes" width="375" height="100">
+    <br />    <br />
+
+    <div class="category-buttons" align="center">
+        <button *ngFor="let c of categories"
+                mat-stroked-button
+                ion button
+                (click)="getBusinessByCategory(c.value)"
+                color="accent">
+            {{c.name}}
+        </button>
+    </div>
+</ion-content>

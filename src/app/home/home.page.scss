@@ -1,0 +1,111 @@
+.welcome-card ion-img {
+    max-height: 35vh;
+    overflow: hidden;
+}
+
+
+.category-buttons {
+    margin-top: 50px;
+
+    button {
+        margin: 5px;
+    }
+}
+
+.pedi {
+    background-color: pink;
+    border: double;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+}
+
+
+.pedi {
+    border-radius: 8px;
+}
+
+.meni {
+    background-color: pink;
+    border: double;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+}
+
+.meni {
+    border-radius: 8px;
+}   
+
+
+
+.face {
+    background-color: pink;
+    border: double;
+    color: white;
+    padding: 8px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+}
+
+
+.face {
+    border-radius: 8px;
+}
+
+//title on the left and action to the right
+#mainToolbar .toolbar-spacer {
+    flex: 1 1 auto;
+}
+
+#mainToolbar .toolbar-icon {
+    background-size: contain;
+    margin-top: 16px;
+    box-shadow: none;
+    background: #F4F4F4
+}
+/*#mainToolbar.marginDown {
+    margin-bottom: 30px;
+}*/
+//hideing the potoURL shdow
+#mainToolbar .toolbar-avatar {
+    background-size: cover;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin-top: 20px;
+    box-shadow: none;
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    background-color: #F4F4F4
+}
+
+/*.one-background-color {*/
+    /*background: #7044ff;*/
+    /*background-color: -webkit-gradient(120deg,#ff00f7,#00doff);*/
+    /*background-color: rgba(252,236,252,1);*/
+    /*background: @include filter-gradient(#fcecfc, #630147, horizontal);
+}*/
+
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+.example-full-width {
+    width: 100%;
+}
+

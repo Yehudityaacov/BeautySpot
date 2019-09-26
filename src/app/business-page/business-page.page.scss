@@ -1,0 +1,21 @@
+.logo {
+    text-align: center;
+
+    .logo-img {
+        background-size: cover;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        flex-shrink: 0;
+        object-fit: cover;
+    }
+
+    .inline-div {
+        display: inline-flex;
+    }
+}
+.calendar-icon {
+    margin-right: 10px;
+    font-size: 20px;
+    color: #4487ff;
+}

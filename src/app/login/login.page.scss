@@ -1,0 +1,24 @@
+.new-background-color {
+    --background: #7044ff;
+    /*--background: -webkit-gradient(120deg,#ff00f7,#00doff);*/
+    /*background-color: rgba(252,236,252,1);*/
+    /*--background: @include filter-gradient(#fcecfc, #630147, horizontal);*/
+}
+
+.marginTop {
+    margin-top: 100px;
+}
+
+.marginDown {
+    margin-bottom:20px;
+}
+
+.marginLeft {
+    margin-left: 20px;
+}
+.marginLeftBack {
+    margin-left: 100px;
+}
+.toolbar-spacer {
+    flex: 1 1 auto;
+}

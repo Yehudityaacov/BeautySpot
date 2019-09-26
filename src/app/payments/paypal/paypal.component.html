@@ -1,0 +1,51 @@
+﻿<ion-row class="modal-title">
+    <ion-col size="1">
+        <div class="close-modal">
+            <mat-icon (click)="closeModal()">clear</mat-icon>
+        </div>
+    </ion-col>
+    <ion-col size="11">
+        <h4 class="title text" align="center">
+            תשלום לעסק {{business.name}}
+        </h4>
+    </ion-col>
+    <ion-col size="6">
+        <mat-form-field class="mat-input-full-width">
+            <input matInput
+                   placeholder="שם השירות:"
+                   [formControl]="productNameController"
+                   [errorStateMatcher]="matcher"
+                   [(ngModel)]="productName"
+                   name="productName"
+                   type="text"
+                   required>
+            <mat-error *ngIf="productNameController.hasError('required')">
+                שם השירות נדרש
+            </mat-error>
+        </mat-form-field>
+    </ion-col>
+    <ion-col size="6">
+        <mat-form-field class="mat-input-full-width">
+            <input matInput
+                   placeholder="סכום לתשלום:"
+                   [formControl]="amountController"
+                   [errorStateMatcher]="matcher"
+                   [(ngModel)]="amount"
+                   name="amount"
+                   type="number"
+                   required>
+            <mat-error *ngIf="amountController.hasError('required')">
+                סכום נדרש
+            </mat-error>
+            <mat-error *ngIf="!amountController.hasError('required') && amountController.hasError('min')">
+                סכום חייב להיות מעל 1 ש"ח
+            </mat-error>
+        </mat-form-field>
+    </ion-col>
+    <ion-col size="12">
+        <ngx-paypal *ngIf="!amountController.hasError('required') && !productNameController.hasError('required') && !amountController.hasError('min')"
+                    [config]="payPalConfig"></ngx-paypal>
+    </ion-col>
+</ion-row>
+<!--<ngx-paypal [config]="payPalConfig"></ngx-paypal>-->
+

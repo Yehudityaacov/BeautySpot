@@ -1,0 +1,60 @@
+﻿<div class="image-uploader">
+    <ion-row>
+        <ion-col size="1">
+            <div class="close-modal">
+                <mat-icon (click)="closeModal()">clear</mat-icon>
+            </div>
+        </ion-col>
+        <ion-col size="11">
+            <h4 class="title text" align="center">
+                גלריית עסק {{business.name}}
+            </h4>
+        </ion-col>
+    </ion-row>
+    <ion-row *ngIf="mode === 0 || mode === 3">
+        <ion-col size="12">
+            <div align="center">
+                <button mat-icon-button
+                        aria-label="Upload Image"
+                        color="primary"
+                        (click)="onUpload()">
+                    <mat-icon>cloud_upload</mat-icon>
+                </button>
+            </div>
+        </ion-col>
+        <ion-col size="12">
+            <div class="progress">
+                <div class="upload-progress-bar"
+                     *ngIf="(progress$ | async) >= 0.1 && (progress$ | async) <= 99.9">
+                    <div align="center">
+                        {{(progress$ | async) | number}}%
+                    </div>
+                    <mat-progress-bar color="primary"
+                                      mode="determinate"
+                                      *ngIf="(progress$ | async) >= 0.1 && (progress$ | async) <= 99.9"
+                                      value="{{progress$ | async}}"></mat-progress-bar>
+                </div>
+                <div class="upload-complete"
+                     align="center"
+                     *ngIf="(progress$ | async) >= 100">
+                    ההעלאה הושלמה
+                </div>
+            </div>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+        <ion-col size="12">
+            <ngx-image-gallery [images]="images"
+                               [conf]="conf"></ngx-image-gallery>
+        </ion-col>
+        <ion-col size="12">
+            <ngx-gallery [options]="galleryOptions"
+                         [images]="galleryImages"></ngx-gallery>
+        </ion-col>
+    </ion-row>
+    <input type="file"
+           id="file-upload"
+           (change)="upload($event)"
+           accept=".png,.jpg,.jpeg"
+           hidden />
+</div>
