@@ -1,6 +1,19 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\src",
+    "\\src\\app",
+    "\\src\\app\\business",
+    "\\src\\app\\business-page",
+    "\\src\\app\\business-page\\edit-business",
+    "\\src\\app\\business-page\\view-business",
+    "\\src\\app\\business-page\\view-business\\info",
+    "\\src\\app\\business\\business-filter",
+    "\\src\\app\\business\\category-page",
+    "\\src\\app\\mybusiness",
+    "\\src\\app\\user-business-page",
+    "\\src\\services"
   ],
+  "SelectedNode": "\\src\\app\\business-page\\business-page.page.html",
   "PreviewInSolutionExplorer": false
 }

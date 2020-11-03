@@ -40,6 +40,11 @@ export class AppComponent implements OnInit,OnDestroy{
             title: 'עריכת עסק',
             url: '/user-business-page',
             loggedOnly: true
+        },
+        {
+            title: 'מפה',
+            url: '/google-map',
+            loggedOnly: false
         }
     ];
     public appPages = [];

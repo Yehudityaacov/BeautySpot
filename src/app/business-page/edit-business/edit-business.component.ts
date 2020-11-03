@@ -95,7 +95,15 @@ export class EditBusinessComponent implements OnInit, OnDestroy {
             }
         }
     }
-
+ /*  private addLocation() {
+        let newlocation: Location = new Pricing();
+        if (!this.business.pricing) {
+            this.business.pricing = new Array<Pricing>();
+        }
+        this.business.pricing = this.business.pricing.filter(p => p.price && p.name);
+        this.business.pricing.push(newlocation);
+    }
+    */
     public addPricing() {
         let newPricing: Pricing = new Pricing();
         if (!this.business.pricing) {
